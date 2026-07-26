@@ -27,17 +27,23 @@ That instinct was a student's, though, not yet a professional's. I knew the diff
 
 ## What I'm building
 
-**Build.**
+The design is three planes. A deterministic floor decides on structural facts before a call executes. A bounded adjudicator above it can only subtract from what the floor allows. Isolation contains whatever neither can settle.
 
-**[capability-gate](https://github.com/Steck43/capability-gate).** A deny-by-default capability gate for an AI agent's tool calls. Every tool call that reaches the gate is checked against an allowlist before it runs, and a call outside what the skill was granted does not execute. Deterministic code makes the decision, not the model being guarded against. It fails closed, fails loud on a bad policy, and logs every decision before the action runs. It is configured in enforce on my own Hermes profile, after a documented observe, would-deny, adjudicate chain. Least privilege at an agent's point of action.
+**The floor. [capability-gate](https://github.com/Steck43/capability-gate).** A deny-by-default capability gate for an AI agent's tool calls. Every tool call that reaches the gate is checked against an allowlist before it runs, and a call outside what the skill was granted does not execute. Deterministic code makes the decision, not the model being guarded against. It fails closed, fails loud on a bad policy, and logs every decision before the action runs. Configured in enforce on my own Hermes profile, after a documented observe, would-deny, adjudicate chain. Least privilege at an agent's point of action.
 
-**[newwave-owasp-security-lab](https://github.com/Steck43/newwave-owasp-security-lab).** A hands-on OWASP LLM Top 10 security lab. An unsafe versus hardened finance assistant with archived live-model evidence, seven of the ten risks demonstrated, mapped to MITRE ATLAS and NIST AI RMF. Honest about which risks are demonstrated and which are in progress.
+**The adjudicator.** Built and measured, not consumed in live adjudication. Bounded and subtract-only: concur, flag, tighten, escalate, never widen. A prompt-injected judge therefore degrades to denial of service rather than privilege escalation. A paid model sitting in an authorization path is also a denial-of-wallet surface, so it refuses before issuing once its budget is spent, and exhaustion returns the floor's verdict rather than opening or blocking.
+
+**Isolation.** Firecracker microVM under the jailer, a six-crate Rust tree, sub-second jailed boot. Built on its own tree and not consumed by the gate.
+
+## What I broke first
+
+**[newwave-owasp-security-lab](https://github.com/Steck43/newwave-owasp-security-lab).** A hands-on OWASP LLM Top 10 security lab. An unsafe versus hardened finance assistant with archived live-model evidence, seven of the ten risks demonstrated, mapped to MITRE ATLAS and NIST AI RMF. Honest about which risks are demonstrated and which are in progress. LLM10 Unbounded Consumption is one of the seven, and it is the same risk the budget control above is built against: demonstrated in one repository, defended in another.
+
+## Other work
 
 **[crypto-signal-confluence](https://github.com/Steck43/crypto-signal-confluence).** A research instrument that tests whether fusing volume, sentiment, and technical signals produces predictive edge under honest validation and realistic trading costs. It is not a profitable bot and does not claim to be. Edge on real data is unproven, and saying so plainly is the point. The repository carries purged cross-validation, a sentiment ablation, a transaction-cost study, and a clear account of what is validated, what is exploratory, and what is not yet tested.
 
 **[cpt-reimbursement-engine](https://github.com/Steck43/cpt-reimbursement-engine).** A dependency-free TypeScript engine that predicts where Medicare reimbursement fails, not just whether a code exists. Forty-nine tests validated against CMS actuals. Every output is computed at runtime rather than hardcoded, tagged with its provenance, and routed to review instead of a confident wrong answer when the signal is weak.
-
-**Govern. Policy engine (in development).** A governance layer that sits between an autonomous system's experts and its actions. It reads calibrated confidence and uncertainty, decides what is permitted, abstains when the signal is weak, and logs every input, decision, and rationale for audit. A fixed-weight ensemble cannot explain itself. A governed one can.
 
 ## Background
 
