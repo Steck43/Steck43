@@ -27,7 +27,7 @@ That instinct was a student's, though, not yet a professional's. I knew the diff
 
 ## What I'm building
 
-The design is three planes. A deterministic floor decides on structural facts before a call executes. A bounded adjudicator above it can only subtract from what the floor allows. Isolation contains whatever neither can settle.
+The design is four planes plus an identity horizon. The floor decides on structural facts before a call executes. The adjudicator above it can only subtract from what the floor allows. The box contains, and it sits between the two rather than after both, so a contradiction runs somewhere disposable and dies there before anything pays for an adjudication call. The audit attests, because "it was the AI" is not an answer a regulator accepts.
 
 **The floor. [capability-gate](https://github.com/Steck43/capability-gate).** A deny-by-default capability gate for an AI agent's tool calls. Every tool call that reaches the gate is checked against an allowlist before it runs, and a call outside what the skill was granted does not execute. Deterministic code makes the decision, not the model being guarded against. It fails closed, fails loud on a bad policy, and logs every decision before the action runs. Configured in enforce on my own Hermes profile, after a documented observe, would-deny, adjudicate chain. Least privilege at an agent's point of action.
 
