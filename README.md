@@ -35,7 +35,7 @@ The design is four planes plus an identity horizon. The floor decides on structu
 
 **The dual lab. [owasp-dual-top10-lab](https://github.com/Steck43/owasp-dual-top10-lab).** OWASP LLM 2025 slugs with 2026 columns, plus the Agentic list, with harnessed oracles. ASI depth is Reproduced, not Demonstrated.
 
-**Isolation.** Firecracker microVM under the jailer, a six-crate Rust tree, sub-second jailed boot. Built on its own tree and not consumed by the gate.
+**Isolation. [isolation-layer](https://github.com/Steck43/isolation-layer).** Firecracker microVM under the jailer, a six-crate Rust tree, sub-second jailed boot. Built on its own tree and not consumed by the gate. Always-invoked is design intent only.
 
 **The adjudicator.** Built and measured, not consumed in live adjudication. Bounded and subtract-only: concur, flag, tighten, escalate, never widen. A prompt-injected judge therefore degrades to denial of service rather than privilege escalation. A paid model sitting in an authorization path is also a denial-of-wallet surface, so it refuses before issuing once its budget is spent, and exhaustion returns the floor's verdict rather than opening or blocking.
 
