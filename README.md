@@ -19,7 +19,7 @@
 
 ---
 
-I build at the intersection of security and AI. The focus is the containment layer for autonomous agents: the deterministic boundary that decides what an agent is allowed to do before it does it.
+I built four escalation layers for AI agents. A decision can resolve at any level. It escalates due to ambiguity or contradiction the previous layer could not settle. I operate the gate on my own work and keep a hash-chained, append-only record that supersedes and never deletes.
 
 I started this work in the last year of my undergraduate degree in Cybersecurity Technology, building trading systems out of my own research before I held any professional certification. Running them taught me that an autonomous system holding keys, executing unattended, and ingesting outside data is an attack surface before it is a strategy, so I built it security-minded from the first commit. Encrypted credentials, secrets resolved at runtime instead of stored, graceful degradation under failure, and a refusal to feed my models any data I had not checked for tampering or poisoning.
 
@@ -29,19 +29,19 @@ That instinct was a student's, though, not yet a professional's. I knew the diff
 
 The design is four planes plus an identity horizon. The floor decides on structural facts before a call executes. The adjudicator above it can only subtract from what the floor allows. The box contains, and it sits between the two rather than after both, so a contradiction runs somewhere disposable and dies there before anything pays for an adjudication call. The audit attests, because "it was the AI" is not an answer a regulator accepts.
 
-**The floor. [capability-gate](https://github.com/Steck43/capability-gate).** A deny-by-default capability gate for an AI agent's tool calls. Every tool call that reaches the gate is checked against an allowlist before it runs, and a call outside what the skill was granted does not execute. Deterministic code makes the decision, not the model being guarded against. It fails closed, fails loud on a bad policy, and logs every decision before the action runs. Configured in enforce on my own Hermes profile, after a documented observe, would-deny, adjudicate chain. Least privilege at an agent's point of action.
+**The floor. [capability-gate](https://github.com/Steck43/capability-gate).** A deny-by-default capability gate for an AI agent's tool calls. Every tool call that reaches the gate is checked against an allowlist before it runs, and a call outside what the skill was granted does not execute. Deterministic code makes the decision, not the model being guarded against. It fails closed, fails loud on a bad policy, and logs every decision before the action runs. The host runtime still fails open if a hook throws. Configured in enforce on my own Hermes profile, after a documented observe, would-deny, adjudicate chain. Least privilege at an agent's point of action.
 
 **The atom plane. [aegis-atoms](https://github.com/Steck43/aegis-atoms).** Source-present atom plane plus a bounded judge with `apply_verdict=False`. Not the live allowlist. The triad plugin is not mounted.
 
 **The dual lab. [owasp-dual-top10-lab](https://github.com/Steck43/owasp-dual-top10-lab).** OWASP LLM 2025 slugs with 2026 columns, plus the Agentic list, with harnessed oracles. ASI depth is Reproduced, not Demonstrated.
 
-**Isolation. [isolation-layer](https://github.com/Steck43/isolation-layer).** Firecracker microVM under the jailer, a six-crate Rust tree, sub-second jailed boot. Built on its own tree and not consumed by the gate. Always-invoked is design intent only.
+**Isolation. [isolation-layer](https://github.com/Steck43/isolation-layer).** Firecracker microVM under the jailer, a six-crate Rust tree. Built on its own tree and not consumed by the gate. Always-invoked is design intent only.
 
 **The adjudicator.** Built and measured, not consumed in live adjudication. Bounded and subtract-only: concur, flag, tighten, escalate, never widen. A prompt-injected judge therefore degrades to denial of service rather than privilege escalation. A paid model sitting in an authorization path is also a denial-of-wallet surface, so it refuses before issuing once its budget is spent, and exhaustion returns the floor's verdict rather than opening or blocking.
 
 ## What I broke first
 
-**[newwave-owasp-security-lab](https://github.com/Steck43/newwave-owasp-security-lab).** A hands-on OWASP LLM Top 10 security lab. An unsafe versus hardened finance assistant with archived live-model evidence, seven of the ten risks demonstrated, mapped to MITRE ATLAS and NIST AI RMF. Honest about which risks are demonstrated and which are in progress. LLM10 Unbounded Consumption is one of the seven, and it is the same risk the budget control above is built against: demonstrated in one repository, defended in another.
+**[newwave-owasp-security-lab](https://github.com/Steck43/newwave-owasp-security-lab).** A hands-on OWASP LLM Top 10 security lab. An unsafe versus hardened finance assistant with archived live-model evidence, seven of the ten risks carrying archived in-lab capture from live model APIs, mapped to MITRE ATLAS and NIST AI RMF. Honest about which risks carry captured evidence and which are still open. LLM10 Unbounded Consumption is one of the seven, and it is the same risk the budget control above is built against: captured in one repository, defended in another.
 
 ## Other work
 
