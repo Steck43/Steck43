@@ -29,15 +29,28 @@ That instinct was a student's, though, not yet a professional's. I knew the diff
 
 The design is four planes plus an identity horizon. The floor decides on structural facts before a call executes. The adjudicator above it can only subtract from what the floor allows. The box contains, and it sits between the two rather than after both, so a contradiction runs somewhere disposable and dies there before anything pays for an adjudication call. The audit attests, because "it was the AI" is not an answer a regulator accepts.
 
-**The floor. [capability-gate](https://github.com/Steck43/capability-gate).** A deny-by-default capability gate for an AI agent's tool calls. Every tool call that reaches the gate is checked against an allowlist before it runs, and a call outside what the skill was granted does not execute. Deterministic code makes the decision, not the model being guarded against. It fails closed, fails loud on a bad policy, and logs every decision before the action runs. The host runtime still fails open if a hook throws. Configured in enforce on my own Hermes profile, after a documented observe, would-deny, adjudicate chain. Least privilege at an agent's point of action.
+```mermaid
+flowchart TD
+  CALL([Proposed tool call]) --> FLOOR[Floor · allowlist + atoms]
+  FLOOR -->|clean verdict| ENFORCE[Enforce]
+  FLOOR -->|contradiction the rollup cannot settle| BOX[Box · isolation-layer]
+  BOX -->|still contradicts| JUDGE[Bounded judge · subtract-only]
+  JUDGE -->|concur / flag / tighten / escalate| ENFORCE
+  JUDGE -.->|cannot widen or approve| ENFORCE
+  BOX -->|absorbed| ENFORCE
+  ENFORCE --> OUT([allow · deny · human])
+  JUDGE -->|low confidence / retry cap| HUMAN([Human])
+```
 
-**The atom plane. [aegis-atoms](https://github.com/Steck43/aegis-atoms).** Source-present atom plane plus a bounded judge with `apply_verdict=False`. Not the live allowlist. The triad plugin is not mounted.
+**The floor. [capability-gate](https://github.com/Steck43/capability-gate).** A deny-by-default capability gate for an AI agent's tool calls. Every tool call that reaches the gate is checked against an allowlist before it runs, and a call outside what the skill was granted does not execute. Deterministic code makes the decision, not the model being guarded against. It fails closed, fails loud on a bad policy, and logs every decision before the action runs. The host runtime still fails open if a hook throws. Configured in enforce on my own Hermes profile, after a documented observe, would-deny, adjudicate chain. Least privilege at an agent's point of action. Zenodo DOI [10.5281/zenodo.22018053](https://doi.org/10.5281/zenodo.22018053).
+
+**The atom plane. [aegis-atoms](https://github.com/Steck43/aegis-atoms).** Atom plane plus a bounded subtract-only judge. The live Hermes profile applies that subtract. Not the live allowlist. The triad plugin is not mounted.
 
 **The dual lab. [owasp-dual-top10-lab](https://github.com/Steck43/owasp-dual-top10-lab).** OWASP LLM 2025 slugs with 2026 columns, plus the Agentic list, with harnessed oracles. ASI depth is Reproduced, not Demonstrated.
 
-**Isolation. [isolation-layer](https://github.com/Steck43/isolation-layer).** Firecracker microVM under the jailer, a six-crate Rust tree. Built on its own tree and not consumed by the gate. Always-invoked is design intent only.
+**Isolation. [isolation-layer](https://github.com/Steck43/isolation-layer).** Firecracker microVM under the jailer, a six-crate Rust tree, default branch `main`. Built on its own tree and not consumed by the gate. Always-invoked is design intent only. SPIRE on the isolation host only.
 
-**The adjudicator.** Built and measured, not consumed in live adjudication. Bounded and subtract-only: concur, flag, tighten, escalate, never widen. A prompt-injected judge therefore degrades to denial of service rather than privilege escalation. A paid model sitting in an authorization path is also a denial-of-wallet surface, so it refuses before issuing once its budget is spent, and exhaustion returns the floor's verdict rather than opening or blocking.
+**The adjudicator.** Built, measured, and applied on the live Hermes mount. Bounded and subtract-only: concur, flag, tighten, escalate, never widen. A prompt-injected judge therefore degrades to denial of service rather than privilege escalation. A paid model sitting in an authorization path is also a denial-of-wallet surface, so it refuses before issuing once its budget is spent, and exhaustion returns the floor's verdict rather than opening or blocking.
 
 ## What I broke first
 
