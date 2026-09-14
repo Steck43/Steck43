@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/four-planes.svg" width="560" alt="Four planes: floor, box, judge, audit" />
+<img src="./assets/fig1-box-between.svg" width="720" alt="Figure 1. Box between floor and judge. Audit attests enforce. Identity is not a fifth plane." />
 
 # Landen Stecker
 
@@ -35,20 +35,23 @@ That instinct was a student's, though, not yet a professional's. I knew the diff
 
 ## What I'm building
 
-The design is four planes plus an identity horizon. The floor decides on structural facts before a call executes. The adjudicator above it can only subtract from what the floor allows. The box contains, and it sits between the two rather than after both, so a contradiction runs somewhere disposable and dies there before anything pays for an adjudication call. The audit attests, because "it was the AI" is not an answer a regulator accepts.
+The design is four planes. Identity is the argument they take, not a fifth plane. The floor decides on structural facts before a call executes. The adjudicator above it can only subtract from what the floor allows. The box contains, and it sits between the two rather than after both, so a contradiction runs somewhere disposable and dies there before anything pays for an adjudication call. The audit attests, because "it was the AI" is not an answer a regulator accepts.
 
 ```mermaid
 flowchart TD
-  CALL([Proposed tool call]) --> FLOOR[Floor · allowlist + atoms]
-  FLOOR -->|clean verdict| ENFORCE[Enforce]
-  FLOOR -->|contradiction the rollup cannot settle| BOX[Box · isolation-layer]
-  BOX -->|still contradicts| JUDGE[Bounded judge · subtract-only]
-  JUDGE -->|concur / flag / tighten / escalate| ENFORCE
-  JUDGE -.->|cannot widen or approve| ENFORCE
-  BOX -->|absorbed| ENFORCE
-  ENFORCE --> OUT([allow · deny · human])
-  JUDGE -->|low confidence / retry cap| HUMAN([Human])
+  CALL["Proposed tool call<br/>identity is the argument, not a fifth plane"] --> FLOOR["Floor: allowlist + atoms"]
+  FLOOR -->|"clean"| ENFORCE["Enforce on author Hermes profile"]
+  FLOOR -->|"rollup cannot settle"| BOX["Box: isolation-layer"]
+  BOX -->|"still contradicts"| JUDGE["Judge: subtract only"]
+  BOX -->|"absorbed"| ENFORCE
+  JUDGE -->|"concur / flag / tighten"| ENFORCE
+  JUDGE -.->|"cannot widen or approve"| ENFORCE
+  JUDGE -->|"low confidence"| HUMAN["Human"]
+  ENFORCE --> OUT["allow / deny / human"]
+  ENFORCE --> AUDIT["Audit: hash-chained, append-only"]
 ```
+
+Architecture, not a forced invoke path. `always_invoked` is false. Triad plugin is not mounted. Enforce is scoped to the author's Hermes profile. Anderson row 1 is MEASURED-false. Attribution records; it does not prove bearer.
 
 <p align="center">
   <a href="https://github.com/Steck43/capability-gate"><img src="https://img.shields.io/badge/floor-capability--gate-1f6feb?style=flat-square" alt="capability-gate" /></a>
