@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="500" viewBox="0 0 1500 500" role="img" aria-label="Landen Stecker, AI and Agent Security">
+  <rect width="1500" height="500" fill="#0d1117"/>
+  <text x="80" y="230" fill="#e6edf3" font-family="ui-sans-serif, system-ui, sans-serif" font-size="42" font-weight="600">Landen Stecker</text>
+  <text x="80" y="278" fill="#8b949e" font-family="ui-sans-serif, system-ui, sans-serif" font-size="20">AI and Agent Security</text>
+  <rect x="80" y="330" width="160" height="3" fill="#1f6feb"/>
+  <rect x="256" y="330" width="160" height="3" fill="#8b949e"/>
+  <rect x="432" y="330" width="160" height="3" fill="#6e7781"/>
+  <rect x="608" y="330" width="160" height="3" fill="#30363d"/>
+  <text x="80" y="372" fill="#656d76" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" letter-spacing="2">FLOOR · BOX · JUDGE · AUDIT</text>
+</svg>
