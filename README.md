@@ -51,7 +51,7 @@ flowchart TD
   ENFORCE --> AUDIT["Audit: hash-chained, append-only"]
 ```
 
-Architecture, not a forced invoke path. `always_invoked` is false. Triad plugin is not mounted. Enforce is scoped to the author's Hermes profile. Anderson row 1 is MEASURED-false. Attribution records; it does not prove bearer.
+A call resolves at the floor when the fact is structural. It escalates to the box, then the judge, when the previous layer cannot settle the contradiction. The judge can only subtract. Enforce runs on my Hermes profile. `always_invoked` is false. The audit is hash-chained and append-only. It supersedes and does not delete.
 
 <p align="center">
   <a href="https://github.com/Steck43/capability-gate"><img src="https://img.shields.io/badge/floor-capability--gate-1f6feb?style=flat-square" alt="capability-gate" /></a>
