@@ -65,20 +65,20 @@ A call resolves at the floor when the fact is structural. It escalates to the bo
 | Plane | Roof | Live |
 |---|---|---|
 | Floor | [capability-gate](https://github.com/Steck43/capability-gate) | enforce on my Hermes profile. DOI [10.5281/zenodo.22018053](https://doi.org/10.5281/zenodo.22018053) |
-| Atom plane | [aegis-atoms](https://github.com/Steck43/aegis-atoms) | subtract applied on that mount. triad plugin not mounted |
+| Atom plane | [aegis-atoms](https://github.com/Steck43/aegis-atoms) | subtract built and tested, live load not measured. triad plugin not mounted |
 | Box | [isolation-layer](https://github.com/Steck43/isolation-layer) | default `main`. always-invoked is design intent only |
 | Judge | same mount as atoms | subtract-only. never widen |
 | Evidence | [dual-lab](https://github.com/Steck43/owasp-dual-top10-lab) · [newwave](https://github.com/Steck43/newwave-owasp-security-lab) | ASI depth is Reproduced, not Demonstrated |
 
 **The floor. [capability-gate](https://github.com/Steck43/capability-gate).** A deny-by-default capability gate for an AI agent's tool calls. Every tool call that reaches the gate is checked against an allowlist before it runs, and a call outside what the skill was granted does not execute. Deterministic code makes the decision, not the model being guarded against. It fails closed, fails loud on a bad policy, and logs every decision before the action runs. The host runtime still fails open if a hook throws. Configured in enforce on my own Hermes profile, after a documented observe, would-deny, adjudicate chain. Least privilege at an agent's point of action.
 
-**The atom plane. [aegis-atoms](https://github.com/Steck43/aegis-atoms).** Atom plane plus a bounded subtract-only judge. The live Hermes profile applies that subtract. Not the live allowlist. The triad plugin is not mounted.
+**The atom plane. [aegis-atoms](https://github.com/Steck43/aegis-atoms).** Atom plane plus a bounded subtract-only judge. The live Hermes load and subtract are not measured live yet. Not the live allowlist. The triad plugin is not mounted.
 
 **Isolation. [isolation-layer](https://github.com/Steck43/isolation-layer).** Firecracker microVM under the jailer, a six-crate Rust tree, default branch `main`. Built on its own tree and not consumed by the gate. Always-invoked is design intent only. SPIRE on the isolation host only.
 
 **The dual lab. [owasp-dual-top10-lab](https://github.com/Steck43/owasp-dual-top10-lab).** OWASP LLM 2025 slugs with 2026 columns, plus the Agentic list, with harnessed oracles. ASI depth is Reproduced, not Demonstrated.
 
-**The adjudicator.** Built, measured, and applied on the live Hermes mount. Bounded and subtract-only: concur, flag, tighten, escalate, never widen. A prompt-injected judge therefore degrades to denial of service rather than privilege escalation. A paid model sitting in an authorization path is also a denial-of-wallet surface, so it refuses before issuing once its budget is spent, and exhaustion returns the floor's verdict rather than opening or blocking.
+**The adjudicator.** Built and tested. Applying it on the live Hermes mount is not measured live yet. Bounded and subtract-only: concur, flag, tighten, escalate, never widen. A prompt-injected judge therefore degrades to denial of service rather than privilege escalation. A paid model sitting in an authorization path is also a denial-of-wallet surface, so it refuses before issuing once its budget is spent, and exhaustion returns the floor's verdict rather than opening or blocking.
 
 ## What I broke first
 
@@ -89,7 +89,7 @@ A call resolves at the floor when the fact is structural. It escalates to the bo
 
 **[crypto-signal-confluence](https://github.com/Steck43/crypto-signal-confluence).** A research instrument that tests whether fusing volume, sentiment, and technical signals produces predictive edge under honest validation and realistic trading costs. It is not a profitable bot and does not claim to be. Edge on real data is unproven, and saying so plainly is the point. The repository carries purged cross-validation, a sentiment ablation, a transaction-cost study, and a clear account of what is validated, what is exploratory, and what is not yet tested.
 
-**[cpt-reimbursement-engine](https://github.com/Steck43/cpt-reimbursement-engine).** A dependency-free TypeScript engine that predicts where Medicare reimbursement fails, not just whether a code exists. Forty-nine tests validated against CMS actuals. Every output is computed at runtime rather than hardcoded, tagged with its provenance, and routed to review instead of a confident wrong answer when the signal is weak.
+**[cpt-reimbursement-engine](https://github.com/Steck43/cpt-reimbursement-engine).** A dependency-free TypeScript engine that predicts where Medicare reimbursement fails, not just whether a code exists. Every output is computed at runtime rather than hardcoded, tagged with its provenance, and routed to review instead of a confident wrong answer when the signal is weak.
 
 - Navy veteran, nearly seven years.
 - B.S. Cybersecurity Technology, University of Maryland Global Campus, 2025. Computer science minor. Capstone work in blockchain and machine learning, and an APT32 threat risk analysis using MITRE ATT&amp;CK.
