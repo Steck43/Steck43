@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" role="img" aria-labelledby="t d">
   <title id="t">Figure 1. Box between floor and judge. Audit attests enforce. Identity is the argument, not a fifth plane.</title>
   <desc id="d">A proposed tool call enters the floor. A structural fact resolves there and goes to enforce. A rollup the floor cannot settle enters the isolation box. The box sits between floor and judge. What the box cannot absorb goes to a subtract-only judge. The judge cannot widen or approve. Enforce writes a hash-chained append-only audit. always_invoked is false.</desc>
+  <rect width="920" height="560" fill="#f6f8fa"/>
   <style>
     .box { fill: #f6f8fa; stroke: #24292f; stroke-width: 1.5; }
     .audit { fill: #fff8e8; stroke: #9a6700; stroke-width: 1.5; }
