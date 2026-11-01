@@ -4,7 +4,7 @@
 
 **Security architect for AI agents**
 
-CISSP &nbsp;&middot;&nbsp; M.S. Artificial Intelligence candidate, Santa Clara University
+CISSP &nbsp;&middot;&nbsp; M.S. Artificial Intelligence, Santa Clara University
 &nbsp;&middot;&nbsp; Navy veteran
 
 </div>
