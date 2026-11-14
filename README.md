@@ -2,19 +2,19 @@
 
 # Landen Stecker
 
-**Security architect for AI agents**
+**Security Architect and Engineer for AI Agents**
 
 CISSP &nbsp;&middot;&nbsp; M.S. Artificial Intelligence, Santa Clara University
-&nbsp;&middot;&nbsp; Navy veteran
+&nbsp;&middot;&nbsp; U.S. Navy Veteran
 
 </div>
 
 > **The helpfulness is the hazard.** A capable agent without context or bounds does not
-> refuse. It fills the gap with a guess and acts, with real permissions.
+> refuse. It fills the gap with a best guess and acts with real permissions.
 
-So the control cannot live inside the model. I build the control that sits in front of
-every action an AI agent takes, and answers three questions: who allowed this action, how
-do we stop it now, and how do we prove what happened.
+Prompt instructions cannot hold that line because a model can be talked out of anything.
+The control sits in front of every action an AI agent takes, answering three questions:
+who allowed this action, how to stop it now, and how to prove what happened.
 
 <p align="center">
 <img src="assets/gate-in-system.png" width="560"
@@ -53,11 +53,11 @@ the earlier course lab.
 
 Nearly seven years of Navy security operations across Bahrain, Poland and Norfolk.
 Built the security program for a NATO installation from construction to commissioning.
-Led a fifty-person security department at Naval Station Norfolk as Security Operations
-Manager (billet: Watch Commander).
+Department Head, Base Operations and Squad Leader, Security at Naval Station Norfolk.
 
 M.S. Artificial Intelligence at Santa Clara University, in progress. B.S. Cybersecurity
-Technology. CISSP, ISC2 CC, CompTIA Security+ and A+.
+Technology. CISSP (May 2026), ISC2 Certified in Cybersecurity (Apr 2026) and CompTIA
+Security+ (Oct 2025).
 
 <details>
 <summary>Earlier work</summary>
